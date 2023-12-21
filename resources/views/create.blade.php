@@ -19,10 +19,12 @@
                             <input type="text" class="form-control" id="phone" name="phone">
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Teacher Name</label>
-                            <select name="teacher_id" id="">
-                                @foreach ($students as $student)
-                                    <option value="{{$student->id}}">{{$student->name}}</option>
+                            <label for="" class="form-label">Classroom Name</label>
+                            <select name="classroom_id" id="" class="form-select">
+                                @foreach ($classrooms as $classroom)
+                                    <option value="{{$classroom->id}}">
+                                        {{$classroom->name}}
+                                    </option>
                                 @endforeach
                             </select>
                             {{-- <input type="text" class="form-control" id="phone" name="phone"> --}}

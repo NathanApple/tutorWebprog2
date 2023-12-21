@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classroom;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -16,9 +17,9 @@ class StudentController extends Controller
     }
 
     public function create(){
-        $students = Student::all();
+        $classrooms = Classroom::all();
         
-        return view('create', compact('students'));
+        return view('create', compact('classrooms'));
     }
 
     public function insert(Request $request){
@@ -26,7 +27,8 @@ class StudentController extends Controller
 
         Student::create([
             'name' => $request->name,
-            'phone_number' => $phone
+            'phone_number' => $phone,
+            'classroom_id' => $request->classroom_id,
         ]);
 
         return redirect(route('index'));

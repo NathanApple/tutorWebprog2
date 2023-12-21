@@ -14,6 +14,7 @@
                             <th>No</th>
                             <th>Name</th>
                             <th>Phone Number</th>
+                            <th>Classroom</th>
                             <th>Action</th>
                         </tr>
                         @foreach ($students as $student)
@@ -21,6 +22,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$student->name}}</td>
                                 <td>{{$student->phone_number}}</td>
+                                <td>{{$student->classroom->name}}</td>
                                 <td>
                                     <a href="{{route('edit', ['id' => $student->id])}}" class="btn btn-warning">Edit</a>
 
