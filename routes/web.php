@@ -20,9 +20,19 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [StudentController::class, 'index']);
-Route::get('/create', [StudentController::class, 'create'])->name('create');
-Route::post('/create', [StudentController::class, 'insert']);
+Route::get('/', [StudentController::class, 'index'])->name('index');
+// 127.0.0.1:8000/create
+
+Route::middleware(['auth.check'])->group(function() {
+    Route::get('/create', [StudentController::class, 'create'])->name('create');
+    Route::post('/create', [StudentController::class, 'insert']);
+
+    Route::get('/edit/{id}', [StudentController::class, 'edit'])->name('edit');
+    Route::put('/edit/{id}', [StudentController::class, 'update']);
+
+    Route::delete('/delete/{id}', [StudentController::class, 'delete'])->name('delete');
+});
+
 
 Auth::routes();
 

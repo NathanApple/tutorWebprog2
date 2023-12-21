@@ -18,6 +18,15 @@
                             <label for="phone" class="form-label">Phone Number</label>
                             <input type="text" class="form-control" id="phone" name="phone">
                         </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Teacher Name</label>
+                            <select name="teacher_id" id="">
+                                @foreach ($students as $student)
+                                    <option value="{{$student->id}}">{{$student->name}}</option>
+                                @endforeach
+                            </select>
+                            {{-- <input type="text" class="form-control" id="phone" name="phone"> --}}
+                        </div>
                         <input type="submit" value="submit" class="btn btn-primary">
                     </form>
                 </div>

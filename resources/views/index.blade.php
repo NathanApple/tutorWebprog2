@@ -16,12 +16,23 @@
                             <th>Phone Number</th>
                             <th>Action</th>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        @foreach ($students as $student)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$student->name}}</td>
+                                <td>{{$student->phone_number}}</td>
+                                <td>
+                                    <a href="{{route('edit', ['id' => $student->id])}}" class="btn btn-warning">Edit</a>
+
+                                    <form action="{{route('delete', ['id' => $student->id])}}"
+                                        method="post">
+                                        @method('delete')
+                                        @csrf
+                                        <input type="submit" value="Delete" class="btn btn-danger">
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </table>
                 </div>
             </div>
